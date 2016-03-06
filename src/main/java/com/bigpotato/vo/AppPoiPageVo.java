@@ -27,4 +27,12 @@ public class AppPoiPageVo {
     public void setPageCount(int pageCount) {
         this.pageCount = pageCount;
     }
+
+    @Override
+    public String toString() {
+        return "AppPoiPageVo{" +
+                "pageIndex=" + pageIndex +
+                ", pageCount=" + pageCount +
+                '}';
+    }
 }
