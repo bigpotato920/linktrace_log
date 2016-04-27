@@ -24,11 +24,14 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="com.bigpotato" level="info"
+        <Logger name="org.springframework" level="debug">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="com.bigpotato" level="debug"
                 additivity="true">
             <AppenderRef ref="running-log" />
         </Logger>
-        <Root level="info">
+        <Root level="debug">
             <AppenderRef ref="Console" />
         </Root>
     </Loggers>

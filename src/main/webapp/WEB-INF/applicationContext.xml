@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       <bean id="applicationContextBean" class="com.bigpotato.domain.ApplicationContextBean"/>
+       <bean id="autoProxyCreator" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+       <bean id="logInterceptor" class="com.bigpotato.common.log.LogCommonTraceInterceptor"/>
+       <bean id="logCommonAdvisor"
+             class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+              <property name="advice" ref="logInterceptor"/>
+              <property name="patterns">
+                     <list>
+                            <value>.*Controller\..*</value>
+                     </list>
+              </property>
+       </bean>
+
+    <bean id="logCustomInterceptor" class="com.bigpotato.common.log.LogCustomTraceInterceptor"/>
+    <bean id="logCustomAdvisor"
+          class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice" ref="logCustomInterceptor"/>
+        <property name="patterns">
+            <list>
+                <value>com\.bigpotato\.common\.log\.LogCustomPointcut\..*</value>
+            </list>
+        </property>
+    </bean>
+</beans>

@@ -13,4 +13,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <bean id="mvcExtendedServlet" class="com.bigpotato.domain.MvcExtendedServletBean"/>
+    <bean id="autoProxyCreator" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+
 </beans>
