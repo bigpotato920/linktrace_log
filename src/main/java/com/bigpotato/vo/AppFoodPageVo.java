@@ -12,6 +12,8 @@ public class AppFoodPageVo {
     @JSONField(name = "page_count")
     private int pageCount = 0;
 
+    private AppPoiVo appPoiVo;
+
     public int getPageIndex() {
         return pageIndex;
     }
@@ -26,5 +28,13 @@ public class AppFoodPageVo {
 
     public void setPageCount(int pageCount) {
         this.pageCount = pageCount;
+    }
+
+    public AppPoiVo getAppPoiVo() {
+        return appPoiVo;
+    }
+
+    public void setAppPoiVo(AppPoiVo appPoiVo) {
+        this.appPoiVo = appPoiVo;
     }
 }

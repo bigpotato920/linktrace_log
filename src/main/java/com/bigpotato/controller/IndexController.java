@@ -1,7 +1,9 @@
 package com.bigpotato.controller;
 
 import com.bigpotato.common.util.AppCommonUtil;
+import com.bigpotato.service.AppPoiService;
 import com.bigpotato.vo.AppPoiPageVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +17,9 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/")
 public class IndexController {
 	private final static Logger logger = LoggerFactory.getLogger(IndexController.class);
+
+	@Autowired
+	private AppPoiService poiService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody

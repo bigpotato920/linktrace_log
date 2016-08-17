@@ -39,7 +39,7 @@ public class LogCommonAspect {
             logger.warn("#LogCommonAspect recordLog#{} {}:request = {}, response = {}",
                     joinPoint.getTarget().getClass().getSimpleName(),
                     joinPoint.getSignature().getName(),
-                    req.getParameterMap(), returnVal);
+                    req == null ? "" : req.getParameterMap(), returnVal);
         }
 
 
