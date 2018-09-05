@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -19,30 +20,25 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Aspect
 @Component
-public class LogCommonAspect {
-    private final static Logger logger = LoggerFactory.getLogger(LogCommonAspect.class);
+public class MethodAspect {
+    private final static Logger logger = LoggerFactory.getLogger(MethodAspect.class);
 
-    @Pointcut("execution(* com.bigpotato.controller.*.*(..))")
-    public void commonController() {
-    }
 
-    @Around("commonController()")
-    public Object recordLog(ProceedingJoinPoint joinPoint) {
+    @Around("execution(* com.bigpotato.common.util.AppCommonUtil.*(..))")
+    public void recordLog(ProceedingJoinPoint joinPoint) {
         Object returnVal = null;
         try {
             returnVal = joinPoint.proceed();
         } catch (Throwable throwable) {
-            logger.error("#LogCommonAspect recordLog#", throwable);
+            logger.error("#MethodAspect recordLog#", throwable);
         } finally {
             HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 
-            logger.warn("#LogCommonAspect recordLog#{} {}:request = {}, response = {}",
+            logger.warn("#MethodAspect recordLog#{} {}:request = {}, response = {}",
                     joinPoint.getTarget().getClass().getSimpleName(),
                     joinPoint.getSignature().getName(),
                     req.getParameterMap(), returnVal);
         }
-
-        return returnVal;
     }
 
 }

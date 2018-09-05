@@ -14,7 +14,7 @@
     </bean>
 
     <bean id="mvcExtendedServlet" class="com.bigpotato.domain.MvcExtendedServletBean"/>
-    <aop:aspectj-autoproxy/>
-
+    <!--<aop:aspectj-autoproxy/>-->
+    <context:load-time-weaver aspectj-weaving="autodetect"/>
 
 </beans>

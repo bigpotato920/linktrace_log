@@ -2,6 +2,7 @@ package com.bigpotato.common.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.bigpotato.common.aspect.ColorEnum;
 
 /**
  * Created by hjy on 3/5/16.
@@ -20,6 +21,7 @@ public class AppCommonUtil {
         jo.put("code", code);
         jo.put("msg", msg);
         jo.put("data", JSON.toJSON(data));
+        jo.put("color", ColorEnum.BLANK.getValue());
         return jo;
     }
 }

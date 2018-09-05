@@ -1,11 +1,14 @@
 package com.bigpotato.controller;
 
 import com.bigpotato.common.util.AppCommonUtil;
+import com.bigpotato.service.inner.SameNameInterface;
 import com.bigpotato.vo.AppFoodPageVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * App商品列表页接口
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/food")
 public class FoodController {
+	@Resource
+	private SameNameInterface sameNameInterface;
 
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	@ResponseBody
@@ -25,6 +30,7 @@ public class FoodController {
 	@ResponseBody
 	public Object foodDetail() {
 		AppFoodPageVo appFoodPageVo = new AppFoodPageVo();
+
 		return AppCommonUtil.constructResponse(0, "success", appFoodPageVo);
 	}
 }

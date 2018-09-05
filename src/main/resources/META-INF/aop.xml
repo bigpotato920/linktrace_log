@@ -1,0 +1,9 @@
+<aspectj>
+    <weaver options="-verbose -showWeaveInfo">
+        <include within="com.bigpotato.*" />
+    </weaver>
+    <aspects>
+        <!-- weave in just this aspect -->
+        <aspect name="com.bigpotato.common.aspect.MethodAspect" />
+    </aspects>
+</aspectj>
